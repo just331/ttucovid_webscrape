@@ -40,12 +40,18 @@ p.feed(xhtml)
 
 # Now finally obtaining the data of
 # the table required
-pprint(p.tables[0])
+newTable = p.tables
+#finTable = newTable.remove(newTable[0])
+#print(finTable)
+pprint(p.tables)
 
 # converting the parsed data to
 # datframe
 print("\n\nPANDAS DATAFRAME\n")
 dataFrame = pd.DataFrame(data=p.tables[0])
-print(pd.DataFrame(p.tables))
-dataFrame.to_csv('TTU_COVIDNUMS.csv')
-print(dataFrame)
+nDataFrame = dataFrame.drop(0)
+print(nDataFrame)
+#print(pd.DataFrame(p.tables))
+
+nDataFrame.to_csv('TTU_COVIDNUMS.csv', index=False, header=False)
+
